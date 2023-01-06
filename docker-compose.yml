@@ -1,1 +1,14 @@
 version: "3.3"
+# Указываем раздел со связанными сервисами
+services:
+  # Первый сервис, nginx
+  nodejs:
+    container_name: nodejs
+    build: .
+    # Так же пробрасываем порт на котором висит приложение
+    image: nodejs
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./static:/web/static
+    restart: always
