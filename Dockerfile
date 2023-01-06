@@ -17,11 +17,9 @@ ENV NODE_ENV production
 ENV JWT 5652184112:AAEdFhmYZxmdtx8ScJlimBjWGrjbquVG_Dw
 ENV JWT oWgJAyE1HBbj26FR2jEG
 
-RUN npm run build --node-flags --max-old-space-size=2048 --no-warnings
-
+ADD https://github.com/ufoscout/docker-compose-wait/releases/download/2.2.1/wait /wait
 
 ## THE LIFE SAVER
-ADD https://github.com/ufoscout/docker-compose-wait/releases/download/2.2.1/wait /wait
 RUN chmod +x /wait
 
 ## Launch the wait tool and then your application
