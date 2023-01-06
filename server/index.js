@@ -3,7 +3,7 @@ const TelegramApi = require('node-telegram-bot-api')
 const Allegro = require('../middleware/allegro')
 const Alarmer = require('../middleware/alarmer')
 
-const keys = require('../keys')
+const keys = require('./keys')
 const token = keys.TELEGRAM
 
 console.log(token)

@@ -1,6 +1,6 @@
 const axios = require('axios')
 
-const keys = require('../keys')
+const keys = require('../server/keys')
 
 const apiKey = keys.JWT
 const parseLink = 'https://alleap.ru/allegro/parser.php'
