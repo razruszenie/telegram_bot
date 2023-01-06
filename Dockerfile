@@ -14,7 +14,7 @@ RUN npm install
 COPY . .
 
 ENV NODE_ENV production
-ENV JWT 5652184112:AAEdFhmYZxmdtx8ScJlimBjWGrjbquVG_Dw
+ENV TELEGRAM 5652184112:AAEdFhmYZxmdtx8ScJlimBjWGrjbquVG_Dw
 ENV JWT oWgJAyE1HBbj26FR2jEG
 
 ADD https://github.com/ufoscout/docker-compose-wait/releases/download/2.2.1/wait /wait
