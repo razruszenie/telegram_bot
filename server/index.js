@@ -1,12 +1,10 @@
 const TelegramApi = require('node-telegram-bot-api')
 
-const Allegro = require('../middleware/allegro')
-const Alarmer = require('../middleware/alarmer')
+const Allegro = require('./middleware/allegro')
+const Alarmer = require('./middleware/alarmer')
 
 const keys = require('./keys')
 const token = keys.TELEGRAM
-
-console.log(token)
 
 const bot = new TelegramApi(token, {polling: true})
 
@@ -105,7 +103,6 @@ const start = async () => {
             }
             else if(parseData.t === 'more'){
                   if(parseData.se === 'al'){
-                        console.log(parseData)
                         await Allegro.getProduct(bot, chatId, parseData.id, query.message.message_id, 'user');
                   }
             }

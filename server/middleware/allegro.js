@@ -1,11 +1,11 @@
 const axios = require('axios')
 
-const keys = require('../server/keys')
+const keys = require('../keys')
 
 const apiKey = keys.JWT
 const parseLink = 'https://alleap.ru/allegro/parser.php'
 
-const currencies = require('../static/currency')
+const currencies = require('../../static/currency')
 
 
 function calcPage(page, offset, limit){
@@ -234,7 +234,7 @@ module.exports.getProduct = async (bot, chatId, article, messageId, role) => {
             }
       }
       catch(e) {
-            console.log(e)
+            // console.log(e)
             await bot.sendMessage(chatId, 'Ошибка загрузки данных. Попробуйте еще раз');
       }
 
