@@ -5,8 +5,11 @@ const Alarmer = require('./middleware/alarmer')
 
 const keys = require('./keys')
 const token = keys.TELEGRAM
+const PORT = keys.PORT
 
 const bot = new TelegramApi(token, {polling: true})
+
+const app = require('./app')
 
 // t: type
 // v: value
@@ -124,6 +127,8 @@ const start = async () => {
             }
 
       })
+
+      app.listen(PORT, () => console.log(`Server listening on port: ${PORT}`));
 }
 
 start()

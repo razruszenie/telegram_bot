@@ -16,6 +16,7 @@ COPY . .
 ENV NODE_ENV production
 ENV TELEGRAM 5951373149:AAEvVlma-RpkDBpNnijmr-tepwFedKS-d9I
 ENV JWT oWgJAyE1HBbj26FR2jEG
+ENV PORT 3000
 
 ADD https://github.com/ufoscout/docker-compose-wait/releases/download/2.2.1/wait /wait
 
