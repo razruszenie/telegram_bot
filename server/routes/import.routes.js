@@ -9,4 +9,10 @@ router.get(
       ctr.drom
 )
 
+router.get(
+      '/ap',
+      // passport.authenticate('workerJWT', {session: false}),
+      ctr.ap
+)
+
 module.exports = router

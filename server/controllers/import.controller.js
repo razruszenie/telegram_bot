@@ -29,3 +29,48 @@ module.exports.drom = async (req, res) => {
   }
   console.log('Bampart csv created')
 }
+
+module.exports.ap = async (req, res) => {
+
+  res.json('ok')
+
+  const links = [
+    {
+      name: '3',
+      url: 'necel'
+    },
+    {
+      name: '4',
+      url: 'hurxf'
+    },
+    {
+      name: '4',
+      url: 'ddsgm'
+    },
+    {
+      name: '5',
+      url: 'edqtw'
+    },
+    {
+      name: '6',
+      url: 'docxg'
+    },
+  ]
+
+  for(const link of links){
+    
+    const response = await axios.get("https://autopoland.ru/export/drom/one/" + link.name + ".csv",
+          { responseType: 'blob',});
+    const file = response.data;
+
+    const lineArray = file.split('\n');
+
+    const filename = './static/parts/' + link.url + '.csv';
+    const writeStream = fs.createWriteStream(filename);
+
+    for(const line of lineArray){
+      writeStream.write(line);
+    }
+    console.log(link.name + ' ap csv created')
+  }
+}
