@@ -17,7 +17,7 @@ services:
       # Монтируем папку с логами на хост машину для более удобного доступа
       - ./logs:/var/log/nginx/
     depends_on:
-      - nuxt
+      - nodejs
   # Второй сервис Nuxt.js приложение
   nodejs:
     container_name: nodejs
