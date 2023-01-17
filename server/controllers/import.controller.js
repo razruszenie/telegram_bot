@@ -10,7 +10,7 @@ module.exports.drom = async (req, res) => {
         { responseType: 'blob',});
   const file = response.data;
 
-  const domain = 'amizap.ru/'
+  const domain = 'amipart.ru/'
 
   const lineArray = file.split('\n');
 
@@ -23,7 +23,7 @@ module.exports.drom = async (req, res) => {
           .replace(/bampart.com/g, domain)
           .replace(/\/images\/1\//g, '')
           .replace(/\//g, '-')
-          .replace(/https:--amizap.ru-/g, 'https://amizap.ru/images/')
+          .replace(/https:--amipart.ru-/g, 'https://amipart.ru/images/')
 
     writeStream.write(newLine);
   }
