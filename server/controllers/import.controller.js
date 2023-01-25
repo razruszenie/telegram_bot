@@ -18,14 +18,16 @@ module.exports.drom = async (req, res) => {
   const writeStream = fs.createWriteStream(filename);
 
 
-  for(const line of lineArray){
-    let newLine = line.replace('"1_', '"')
-          .replace(/bampart.com/g, domain)
-          .replace(/\/images\/1\//g, '')
-          .replace(/\//g, '-')
-          .replace(/https:--amipart.ru-/g, 'https://amipart.ru/images/')
+  for (const [index, line] of lineArray.keys()) {
+    if(index > 6300) {
+      let newLine=line.replace('"1_', '"')
+            .replace(/bampart.com/g, domain)
+            .replace(/\/images\/1\//g, '')
+            .replace(/\//g, '-')
+            .replace(/https:--amipart.ru-/g, 'https://amipart.ru/images/')
 
-    writeStream.write(newLine);
+      writeStream.write(newLine);
+    }
   }
   console.log('Bampart csv created')
 }
