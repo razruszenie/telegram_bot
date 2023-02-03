@@ -17,9 +17,11 @@ module.exports.drom = async (req, res) => {
   const filename = './static/parts/file.csv';
   const writeStream = fs.createWriteStream(filename);
 
+  console.log(typeof lineArray)
 
-  for (const [index, line] of lineArray.keys()) {
-    if(index > 6300) {
+  let index = 0;
+  for (const line of lineArray) {
+    if(index > 2000 && index < 2540) {
       let newLine=line.replace('"1_', '"')
             .replace(/bampart.com/g, domain)
             .replace(/\/images\/1\//g, '')
@@ -28,6 +30,7 @@ module.exports.drom = async (req, res) => {
 
       writeStream.write(newLine);
     }
+    index++;
   }
   console.log('Bampart csv created')
 }
