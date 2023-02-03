@@ -12,6 +12,10 @@ app.use(cors({origin: '*'}));
 app.use(bodyParser.urlencoded({extended: true}))
 app.use(bodyParser.json())
 
+app.get('/', function(req, res) {
+      res.sendFile('index.html', {root: './static'})
+})
+
 app.use('/images', imagesRoutes)
 app.use('/api/import', importRoutes)
 app.use('/static', express.static(__dirname + '/../static'))
