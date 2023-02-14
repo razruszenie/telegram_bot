@@ -17,7 +17,7 @@ module.exports.drom = async (req, res) => {
   const filename = './static/parts/bnow.csv';
   const writeStream = fs.createWriteStream(filename);
 
-  writeStream.write('"Наименование товара";"Новый/б.у.";"Марка";"Модель";"Кузов";' +
+  writeStream.write('"Артикул";"Наименование товара";"Новый/б.у.";"Марка";"Модель";"Кузов";' +
         '"Номер";"Двигатель";"Год";"L-R";"F-R";"U-D";"Цвет";"Примечание";' +
         '"Количество";"Цена";"Валюта";"Наличие";"Сроки доставки";"Фотография"' + "\r\n");
   let index = 0;
@@ -30,7 +30,8 @@ module.exports.drom = async (req, res) => {
             .replace(/https:--amipart.ru-/g, 'https://amipart.ru/images/')
 
       const newLineArr = newLine.split(';');
-      writeStream.write(newLineArr[4] + ';"б.у.";' + newLineArr[1] + ';' + newLineArr[2] + ';"";'
+      writeStream.write('"ami' + newLineArr[0].replace('"', '') + ';'
+            + newLineArr[4] + ';"б.у.";' + newLineArr[1] + ';' + newLineArr[2] + ';"";'
             + newLineArr[10] + ';"";' + newLineArr[3] + ';"";"";"";"";"";"1";"'
             + (parseInt(newLineArr[13].replace(/"/, ''))) * 80
             + '";"RUB";"В наличии";"1-3 дня";' + newLineArr[16].replace('\\r', ''));
