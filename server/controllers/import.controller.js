@@ -12,7 +12,7 @@ module.exports.drom = async (req, res) => {
 
   const domain = 'amipart.ru/'
 
-  const lineArray = file.split('\n');
+  const lineArray = file.split('\r\n');
 
   const filename = './static/parts/bnow.csv';
   const writeStream = fs.createWriteStream(filename);
