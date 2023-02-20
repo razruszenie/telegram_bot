@@ -34,7 +34,7 @@ module.exports.drom = async (req, res) => {
             + newLineArr[4] + ';"б.у.";' + newLineArr[1] + ';' + newLineArr[2] + ';"";'
             + newLineArr[10] + ';"";' + newLineArr[3] + ';"";"";"";"";"";"1";"'
             + (parseInt(newLineArr[13].replace(/"/, ''))) * 80
-            + '";"RUB";"В наличии";"1-3 дня";' + newLineArr[16].replace('\\r', ''));
+            + '";"RUB";"В наличии";"1-3 дня";' + newLineArr[16].replace('\\r', '') + "\r\n");
     }
     index++;
   }
