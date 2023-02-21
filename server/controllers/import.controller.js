@@ -14,7 +14,7 @@ module.exports.drom = async (req, res) => {
 
   const lineArray = file.split('\r\n');
 
-  const filename = './static/parts/bnow.csv';
+  const filename = './static/parts/drom.csv';
   const writeStream = fs.createWriteStream(filename);
 
   writeStream.write('"Артикул";"Наименование товара";"Новый/б.у.";"Марка";"Модель";"Кузов";' +
@@ -22,23 +22,22 @@ module.exports.drom = async (req, res) => {
         '"Количество";"Цена";"Валюта";"Наличие";"Сроки доставки";"Фотография"' + "\r\n");
   let index = 0;
   for (const line of lineArray) {
-    if(index > 2000 && index < 2540) {
-      let newLine=line.replace('"1_', '"')
-            .replace(/bampart.com/g, domain)
+    if(index > 2500 && index < 3040) {
+
+      const newLineArr = line.replace(/"/g, '').split(';');
+
+      const imgs = newLineArr[16].replace(/bampart.com/g, domain)
             .replace(/\/images\/1\//g, '')
             .replace(/\//g, '-')
             .replace(/https:--amipart.ru-/g, 'https://amipart.ru/images/')
 
-      const newLineArr = newLine.split(';');
-      writeStream.write('"ami' + newLineArr[0].replace('"', '') + ';'
-            + newLineArr[4] + ';"б.у.";' + newLineArr[1] + ';' + newLineArr[2] + ';"";'
-            + newLineArr[10] + ';"";' + newLineArr[3] + ';"";"";"";"";"";"1";"'
-            + (parseInt(newLineArr[13].replace(/"/, ''))) * 80
-            + '";"RUB";"В наличии";"1-3 дня";' + newLineArr[16].replace('\\r', '') + "\r\n");
+      writeStream.write('"ami' + newLineArr[0].replace('1_', '') +
+            '";"' + newLineArr[4] + '";"б.у.";"' + newLineArr[1] + '";"' + newLineArr[2] + '";"";"'
+            + newLineArr[10] + '";"";"' + newLineArr[3] + '";"";"";"";"";"";"1";"' + parseInt(newLineArr[13]) * 80
+            + '";"RUB";"В наличии";"1-3 дня";"' + imgs + '"' + "\r\n");
     }
     index++;
   }
-  console.log('Bampart csv created')
 }
 
 module.exports.ap = async (req, res) => {
