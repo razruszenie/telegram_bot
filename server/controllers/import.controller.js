@@ -69,7 +69,7 @@ module.exports.ap = async (req, res) => {
 
   for(const link of links){
     
-    const response = await axios.get("https://autopoland.ru/export/drom/one/" + link.name + ".csv",
+    const response = await axios.get("https://autopoland.ru/export/drom/ami/" + link.name + ".csv",
           { responseType: 'blob',});
     const file = response.data;
 
